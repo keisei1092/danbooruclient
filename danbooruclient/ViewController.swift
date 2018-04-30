@@ -43,6 +43,16 @@ class ViewController: UICollectionViewController {
 		}).resume()
 	}
 
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard
+			let cell = sender as? UICollectionViewCell,
+			let indexPath = collectionView?.indexPath(for: cell)
+		else { return }
+
+		let vc = segue.destination as! SecondViewController
+		vc.url = urls[indexPath.row]
+	}
+
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return urls.count
 	}
