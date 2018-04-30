@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UICollectionViewController {
 
-	var urls: [String] = [] {
+	var urls: [[String: URL]] = [] {
 		didSet {
 			collectionView?.reloadData()
 		}
@@ -35,7 +35,12 @@ class ViewController: UICollectionViewController {
 				let result = try JSONSerialization.jsonObject(with: data, options: []) as! [AnyObject]
 
 				DispatchQueue.main.async {
-					self?.urls = result.map { $0["preview_file_url"] as! String }
+					self?.urls = result.map {
+						[
+							"preview_file_url": URL(string: $0["preview_file_url"] as! String)!,
+							"file_url": URL(string: $0["file_url"] as! String)!
+						]
+					}
 				}
 			} catch {
 				print("JSON parse error")
@@ -50,7 +55,7 @@ class ViewController: UICollectionViewController {
 		else { return }
 
 		let vc = segue.destination as! SecondViewController
-		vc.url = urls[indexPath.row]
+		vc.url = urls[indexPath.row]["file_url"]
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,7 +64,7 @@ class ViewController: UICollectionViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
-		cell.imageView.download(imageFrom: URL(string: urls[indexPath.row])!)
+		cell.imageView.download(imageFrom: urls[indexPath.row]["preview_file_url"]!)
 		return cell
 	}
 

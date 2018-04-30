@@ -10,13 +10,13 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
-	var url: String?
+	var url: URL?
 
 	@IBOutlet weak var imageView: UIImageView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.imageView.download(imageFrom: URL(string: url!)!)
+		self.imageView.download(imageFrom: url!)
 	}
 
 }
