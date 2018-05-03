@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F32E603F209B501B00259C6A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E603E209B501B00259C6A /* Post.swift */; };
 		F3A18BAD2096A76600B79F82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A18BAC2096A76600B79F82 /* AppDelegate.swift */; };
 		F3A18BAF2096A76600B79F82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A18BAE2096A76600B79F82 /* ViewController.swift */; };
 		F3A18BB22096A76600B79F82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A18BB02096A76600B79F82 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F32E603E209B501B00259C6A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F3A18BA92096A76600B79F82 /* danbooruclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = danbooruclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A18BAC2096A76600B79F82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A18BAE2096A76600B79F82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				F3A18BEE2096B38500B79F82 /* Extensions.swift */,
 				F3A18BF02096B48E00B79F82 /* Cell.swift */,
 				F3A589FD2096B98000899318 /* SecondViewController.swift */,
+				F32E603E209B501B00259C6A /* Post.swift */,
 			);
 			path = danbooruclient;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				F3A18BAF2096A76600B79F82 /* ViewController.swift in Sources */,
 				F3A18BF12096B48E00B79F82 /* Cell.swift in Sources */,
 				F3A18BEF2096B38500B79F82 /* Extensions.swift in Sources */,
+				F32E603F209B501B00259C6A /* Post.swift in Sources */,
 				F3A589FE2096B98000899318 /* SecondViewController.swift in Sources */,
 				F3A18BAD2096A76600B79F82 /* AppDelegate.swift in Sources */,
 			);

@@ -10,17 +10,23 @@ import UIKit
 
 class SecondViewController: UIViewController, UIScrollViewDelegate {
 
-	var url: URL?
+	var post: Post?
 
 	var imageView = UIImageView(frame: UIScreen.main.bounds)
 	@IBOutlet weak var scrollView: UIScrollView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		guard let post = post else { return }
+		print(post)
 
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveDidTap))
+		navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveDidTap))]
 
-		imageView.download(imageFrom: url!)
+		if post.source.absoluteString.contains(find: "twitter.com") {
+			navigationItem.rightBarButtonItems! += [UIBarButtonItem(title: "Twitter", style: .plain, target: self, action: #selector(twitterDidTap))]
+		}
+
+		imageView.download(imageFrom: post.fileURL)
 		imageView.contentMode = .scaleAspectFit
 		scrollView.addSubview(imageView)
 	}
@@ -59,6 +65,10 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
 
 	@objc func saveDidTap() {
 		UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
+	}
+
+	@objc func twitterDidTap() {
+		print(1111)
 	}
 
 	@IBAction func doubleTapDidFire(_ sender: UITapGestureRecognizer) {
