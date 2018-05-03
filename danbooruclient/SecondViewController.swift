@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SecondViewController: UIViewController, UIScrollViewDelegate {
 
@@ -24,6 +25,8 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
 
 		if post.source.absoluteString.contains(find: "twitter.com") {
 			navigationItem.rightBarButtonItems! += [UIBarButtonItem(title: "Twitter", style: .plain, target: self, action: #selector(twitterDidTap))]
+		} else if post.pixivID != nil {
+			navigationItem.rightBarButtonItems! += [UIBarButtonItem(title: "pixiv", style: .plain, target: self, action: #selector(pixivDidTap))]
 		}
 
 		imageView.download(imageFrom: post.fileURL)
@@ -68,7 +71,14 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
 	}
 
 	@objc func twitterDidTap() {
-		print(1111)
+		let vc = SFSafariViewController(url: post!.source)
+		present(vc, animated: true)
+	}
+
+	@objc func pixivDidTap() {
+		let url = URL(string: "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=\(post!.pixivID!)")!
+		let vc = SFSafariViewController(url: url)
+		present(vc, animated: true)
 	}
 
 	@IBAction func doubleTapDidFire(_ sender: UITapGestureRecognizer) {
